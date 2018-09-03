@@ -16,13 +16,9 @@ var options = {
 describe('Nominatim', function () {
   describe('#search', function () {
     it('should return data for an address details and latitude and longitude', function (done) {
-      nominatim.search({ q: '135 pilkington, avenue birmingham'}, function (err, res, data) {
+      nominatim.search({ q: 'Lille'}, function (err, res, data) {
         if (err) throw err;
-        //log('res.request.url: ' + util.inspect(res.request));
         log('data: ' + util.inspect(data));
-        res.should.not.equal.null;
-	//res.request.req._headers.should.have.property('user-agent');
-	//res.request.should.have.property('referer');
         data.should.not.equal.null;
         data[0].should.have.property('lon');
         data[0].should.have.property('lat');
@@ -31,43 +27,6 @@ describe('Nominatim', function () {
         done();
       });
     });
-/*
-    it('should be able to set the language via options param', function (done) {
-      var options = {
-        q: '135 pilkington, avenue birmingham',
-        'accept-language': 'fr'
-      };
-      nominatim.search(options, function (err, res, data) {
-        if (err) throw err;
-        log('res.request.url: ' + util.inspect(res.request.req));
-        log('data: ' + util.inspect(data));
-        res.should.not.equal.null;
-        data.should.not.equal.null;
-        data.should.have.property('lat');
-        data.should.have.property('lon');
-        data.should.have.property('address');
-        done();
-      });
-    });
-    it('should be able to specify multiple options via options param', function (done) {
-      var options = {
-        q: '135 pilkington, avenue birmingham',
-        'accept-language': 'fr'
-      };
-      nominatim.search(options, function (err, res, data) {
-        if (err) throw err;
-        log('res.request.url: ' + util.inspect(res.request.req));
-        log('data: ' + util.inspect(data));
-        res.should.not.equal.null;
-        data.should.not.equal.null;
-        data.should.have.property('lon');
-        data.should.have.property('lat');
-        data.should.have.property('address');
-        data.should.have.property('displayname');
-        done();
-      });
-    });
-*/
   });
   describe('#reverse', function () {
     it('should return data for an address from latitude and longitude', function (done) {
@@ -77,7 +36,6 @@ describe('Nominatim', function () {
       };
       nominatim.reverse(options, function (err, res, data) {
         if (err) throw err;
-        //log('res.request.url: ' + util.inspect(res.request.req));
         log('data: ' + util.inspect(data));
         res.should.not.equal.null;
         data.should.not.equal.null;
@@ -96,7 +54,6 @@ describe('Nominatim', function () {
       };
       nominatim.lookup(options, function (err, res, data) {
         if (err) throw err;
-        //log('res.request.url: ' + util.inspect(res.request.req));
         log('data: ' + util.inspect(data));
         res.should.not.equal.null;
         data.should.not.equal.null;

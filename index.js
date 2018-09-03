@@ -25,12 +25,11 @@ function Nominatim (options) {
   this.requestTimeout = options.timeout || 2500
   this.requestUserAgent = options.useragent || 'NodeJS request'
   this.requestReferer = options.referer || 'https://github.com/xbgmsharp/node-nominatim2'
-  this.url = 'http://nominatim.openstreetmap.org/';
+  this.url = 'https://nominatim.openstreetmap.org/';
   this.search_url = this.url + 'search?';
   this.reverse_url = this.url + 'reverse?';
   this.lookup_url = this.url + 'lookup?';
   this.mapquestapi = {};
-  //this.mapquestapi.APIKey = options.APIKey;
   this.mapquestapi.url = 'http://open.mapquestapi.com/nominatim/v1/';
   this.mapquestapi.search_url = this.mapquestapi.url + 'search.php?';
   this.mapquestapi.reverse_url = this.mapquestapi.url + 'reverse.php?';
